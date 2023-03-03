@@ -1,0 +1,21 @@
+.main,table{
+    border: 1px solid black;
+    padding: 12px;
+}
+.input-box{
+    display: flex;
+    flex-direction: column;
+}
+.product-page{
+    border: 1px solid black;
+    padding: 24px;
+}
+.dropdown-selections-pages{
+    padding: 24px;
+}
+.input-box button{
+    width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
