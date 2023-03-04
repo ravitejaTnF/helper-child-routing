@@ -21,8 +21,7 @@
                 <div class="search-box" *ngFor="let item of
                     productDataResultsFromAPIbasedOnSearchText">
                     <li>Action: <a href="javascript:void(0);"
-                            (click)="showProductDetailsDropdown(item.title)"
-                            [routerLink]="['/product-helper/finder']">Select</a></li>
+                            (click)="showProductDetailsDropdown(item.title,item.ISBN,item.SKU)">Select</a></li>
                     <li>versionType:<p>{{item.versionType}}</p></li>
                     <li>SKU:<p>{{item.SKU}}</p></li>
                     <li>ISBN:<p>{{item.ISBN}}</p></li>
@@ -36,7 +35,8 @@
             <div class="dropdown">
                 <h4 style="color: white;background-color: black;text-align:
                     center;">{{titleBesidesDropdown}}</h4>
-                <select [(ngModel)]="productPageDropdownSelectedValue" class="form-select"
+                <select [(ngModel)]="productPageDropdownSelectedValue"
+                    class="form-select"
                     (ngModelChange)="navigateToCorrespondingPageBasedOnDropdownSelection()">
                     <option *ngFor="let item of dropdownArrayValues"
                         [value]="item">{{item}}</option>

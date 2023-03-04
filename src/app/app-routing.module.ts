@@ -21,7 +21,7 @@ const routes: Routes = [
     path: 'product-helper',
     component: ProductHelperComponent,
     children: [
-      { path: 'finder', component: FinderComponent },
+      { path: 'finder', component: FinderComponent, pathMatch: 'full' },
       { path: 'products', component: ProductsComponent },
       { path: 'categories', component: CategoriesComponent },
       { path: 'downloads', component: DownloadsComponent },

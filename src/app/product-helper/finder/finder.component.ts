@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-finder',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FinderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router: Router, private activatedRoute: ActivatedRoute) {
+    console.log(this.router.getCurrentNavigation()?.extras.state);
+  }
 
   ngOnInit(): void {
+  
   }
 
 }
