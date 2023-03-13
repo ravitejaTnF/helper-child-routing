@@ -9,14 +9,10 @@ import { ProductHelperService } from './../services/product-helper.service';
 })
 export class ProductHelperComponent implements OnInit {
 
-  constructor(private productService: ProductHelperService, private _router: Router,private cdr:ChangeDetectorRef) { }
+  constructor(private productService: ProductHelperService, private _router: Router) { }
 
   ngOnInit(): void {
-    console.log('helo');
     this.setFlags();
-  }
-  ngAfterViewInit(){
-    this.cdr.detectChanges();
   }
   searchText: string = '';
   showProductDetailsWhenSearchIsValid: boolean = false;
