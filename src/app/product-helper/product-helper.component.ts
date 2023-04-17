@@ -13,7 +13,7 @@ export class ProductHelperComponent implements OnInit {
 
   ngOnInit(): void {
     this.setFlags();
-    this.getDataFromLocalStorage();
+    this.getDataFromsessionStorage();
   }
   searchText: string = '';
   showProductDetailsWhenSearchIsValid: boolean = false;
@@ -40,8 +40,8 @@ export class ProductHelperComponent implements OnInit {
     if (this.searchText.length > 5) {
       this.showProductDetailsWhenSearchIsValid = true;
       this.productService.getData().subscribe((res: any) => {
-        localStorage.setItem('isbn',this.searchText);
-        localStorage.setItem('bookdata',JSON.stringify(res));
+        sessionStorage.setItem('isbn',this.searchText);
+        sessionStorage.setItem('bookdata',JSON.stringify(res));
         this.productDataResultsFromAPIbasedOnSearchText = res;
       })
     }
@@ -86,12 +86,13 @@ export class ProductHelperComponent implements OnInit {
       this._router.navigate(['/product-helper/product-resources'], { state: { data: { title: this.title, isbn: this.isbn, sku: this.sku } } });
     }
   }
-  getDataFromLocalStorage(){
-    if(localStorage.getItem('isbn') != null){
-      // let data = JSON.parse(localStorage.getItem("bookdata") || "[]");
-      // let isbn = localStorage.getItem('isbn');
-      // this.searchText = isbn != null ? isbn : this.searchText;
-      // this.productDataResultsFromAPIbasedOnSearchText = data;
+  getDataFromsessionStorage(){
+    if(sessionStorage.getItem('isbn') != null){
+      let data = JSON.parse(sessionStorage.getItem("bookdata") || "[]");
+      let isbn = sessionStorage.getItem('isbn');
+      this.searchText = isbn != null ? isbn : this.searchText;
+      this.searchText = isbn != null ? isbn : '';
+      this.showProductdataBasedOnSearchText();
     }
   }
 }
