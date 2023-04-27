@@ -26,7 +26,7 @@ export class ProductHelperComponent implements OnInit {
   title: string = '';
   isbn: string = '';
   sku: string = '';
-  dropdownArrayValues = ['Finder', 'Product', 'Categories & Classifications', 'Downloads', 'Imprints & Publishers', 'Inventory Status', 'Originators', 'Pricing & Discounts', 'Series & Bindings', 'Product Resources'];
+  dropdownArrayValues = ['Product', 'Categories & Classifications', 'Downloads', 'Imprints & Publishers', 'Inventory Status', 'Originators', 'Pricing & Discounts', 'Series & Bindings', 'Product Resources'];
   
   setFlags(){
     console.log('in set flags');
@@ -59,16 +59,14 @@ export class ProductHelperComponent implements OnInit {
     this.showProductDetailsWhenSearchIsValid = false;
     this.showProductDetailsDropdownDiv = true;
     this.showDropdown = true;
-    this._router.navigate(['/product-helper/finder'],{ state: { data: { title: this.title, isbn: this.isbn, sku: this.sku } } });
+    this._router.navigate(['/product-helper/products'],{ state: { data: { title: this.title, isbn: this.isbn, sku: this.sku } } });
   }
   // Navigating to pages based upon the dropdown selection
   navigateToCorrespondingPageBasedOnDropdownSelection() {
     //console.log(this.productPageDropdownSelectedValue);
     if (this.productPageDropdownSelectedValue == this.dropdownArrayValues[1]) {
       this._router.navigate(['/product-helper/products'], { state: { data: { title: this.title, isbn: this.isbn, sku: this.sku } } });
-    } else if (this.productPageDropdownSelectedValue == this.dropdownArrayValues[0]) {
-      this._router.navigate(['/product-helper/finder'], { state: { data: { title: this.title, isbn: this.isbn, sku: this.sku } } });
-    } else if (this.productPageDropdownSelectedValue == this.dropdownArrayValues[2]) {
+    }else if (this.productPageDropdownSelectedValue == this.dropdownArrayValues[2]) {
       this._router.navigate(['/product-helper/categories'], { state: { data: { title: this.title, isbn: this.isbn, sku: this.sku } } });
     } else if (this.productPageDropdownSelectedValue == this.dropdownArrayValues[3]) {
       this._router.navigate(['/product-helper/downloads'], { state: { data: { title: this.title, isbn: this.isbn, sku: this.sku } } });
